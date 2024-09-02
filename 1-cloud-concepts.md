@@ -1,15 +1,18 @@
 # Describe Cloud Concepts
 
-LP: https://docs.microsoft.com/en-us/learn/paths/az-900-describe-cloud-concepts/
+LP: https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/
+LM: https://learn.microsoft.com/en-us/training/modules/describe-core-architectural-components-of-azure/
 
 Identify Cloud Computing benefits, use GASHED:
 
 * Geo-distribution
 * Agility
-* Scalability
-* High Availability
+* Scalability: Ability to adjust resources to meet demand. You only pay for what you use. Vertical scaling is focused on increasing or decreasing the capabilities of resources (scale up - scale down). Horizontal scaling is adding or subtracting the number of resources (sclae out - scale in).
+* High Availability (SLA) High availability focuses on ensuring maximum availability, regardless of disruptions or events that may occur
 * Elasticity
 * Disaster Recovery
+* Reliability: Ability of a system to recover from failures and continue to function
+* Predictability: Predictability can be focused on performance predictability or cost predictability (Total Cost of Ownership (TCO) or Pricing Calculator)
 
 
 ## Azure Portal
@@ -31,6 +34,19 @@ Azure Account -> Many subscriptions -> Many Resource groups -> Resources
 | Public | Services over the internet. Owned by a third party| OpEx |
 | Private | Exclusive by users from a company. Can be on-premise, datacenter, or hosted by a third-party service provider.| CapEx |
 | Hybrid | Combination of Public and Private| |
+
+
+| Public cloud | Private cloud | Hybrid cloud |
+| No capital expenditures to scale up | Organizations have complete control over resources and security	| Provides the most flexibility | 
+| Applications can be quickly provisioned and deprovisioned	| Data is not collocated with other organizations’ data	| Organizations determine where to run their applications | 
+| Organizations pay only for what they use	| Hardware must be purchased for startup and maintenance | Organizations control security, compliance, or legal requirements | 
+| Organizations don’t have complete control over resources and security	| Organizations are responsible for hardware maintenance and updates | | 	
+
+## Azure Arc
+Azure Arc is a set of technologies that helps manage your cloud environment (public, private or hybrid)
+
+## Azure VMware Solution
+What if you’re already established with VMware in a private cloud environment but want to migrate to a public or hybrid cloud? Azure VMware Solution lets you run your VMware workloads in Azure with seamless integration and scalability.
 
 ## Expenses
 
@@ -56,7 +72,7 @@ Is the basis of OpEx:
 
 | Model | Description | Complexity/Ownership |
 | -- | -- | -- | 
-| IaaS | OS and Network owned by the user, including maintenance and configuration | High | 
+| IaaS | OS and Network owned by the user, including maintenance and configuration, suitable for lift-and-shift scenarios | High | 
 | PaaS | Apps are deployed into a managed OS. No ownership of hardware or software requirements | Medium |
 | SaaS | User only provides data. Everything else is managed. E.g. MS Office | Low |
 
@@ -76,6 +92,7 @@ Definition: A geographical area with one or more datacenters nearby and networke
 **Special Regions**: US DoD, US Gov: physically+logically isolated with additional compliance certifications. China 
 is operated by 21Vianet.
 
+There are some global Azure services that don't require you to select a particular region, such as Microsoft Entra ID, Azure Traffic Manager, and Azure DNS.
 
 ## Azure availability Zones
 
@@ -87,19 +104,21 @@ Not all regions have AZs.
 
 Services that support AZs have these categories:
 
-* **Zonal service**: Pins to a zone
-* **Zone-redundant**: Auto-replication across zones
+* **Zonal service**: Pins to a zone (for example, VMs, managed disks, IP addresses)
+* **Zone-redundant**: Auto-replication across zones  (for example, zone-redundant storage, SQL Database)
 * **Non-regional**: HA in an Azure geography. 
 
 ## Azure Region Pairs
 
 Definition: Each Azure region is **always paired** with another region within the same geography.
 
-AZs have one or more datacenters, and a Region has at least 3 zones. 
+AZs have one or more datacenters, and a Region has at least 3 zones. (¿?)
 
 Helps protect against natural disasters or civil unrest. Separated at least 300 miles.
 
 Replication resides always within the same Geography as the pair except for Brazil South.
+
+Sovereign regions are instances of Azure that are isolated from the main instance of Azure. You may need to use a sovereign region for compliance or legal purposes. US DoD Central, China East..
 
 ## Azure resources and Azure resource Manager
 
@@ -144,3 +163,7 @@ Additional subscription helps with:
 Definition: Provides a level of scope above subscriptions. Helps organize subscriptions into groups.
 
 Helps provide user access to multiple subscriptions with a single RBAC that gets inherited
+A policy can be applied at management group so that it is inherited.
+10,000 management groups can be supported in a single directory.
+A management group tree can support up to six levels of depth. This limit doesn't include the root level or the subscription level.
+Each management group and subscription can support only one parent.
