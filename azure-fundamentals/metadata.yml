@@ -1,0 +1,16 @@
+---
+title: Microsoft Azure Management Tools and Security Solutions
+author: Yo Mismo
+rights: --
+lang: en-US
+mainlang: english
+otherlang: english
+tags: [az900, Azure]
+abstract: |
+  Summary of Course https://www.coursera.org/learn/microsoft-azure-cloud-services/ in Coursera.
+mainfont: DejaVu Sans
+# Filter preferences:
+# - pandoc-crossref
+linkReferences: true
+---
+
